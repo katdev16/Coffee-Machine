@@ -29,3 +29,20 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
+
+def Coffee_Selection(Coffee):
+    if Coffee in MENU:
+        return f"Your selection: {Coffee}"
+    else:
+        return "Unavailable"
+
+def Off():
+    if User_input == "off":
+        return False
+    return True
+
+while Off():
+    User_input = input("What would you like? (espresso/latte/cappuccino):")
+    print(Coffee_Selection(User_input))
+
