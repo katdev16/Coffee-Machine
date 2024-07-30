@@ -36,13 +36,24 @@ def Coffee_Selection(Coffee):
         return f"Your selection: {Coffee}"
     else:
         return "Unavailable"
-
+User_input = input("")
 def Off():
     if User_input == "off":
         return False
     return True
 
+def report():
+    if User_input == "report":
+        return MENU.get("espresso")
+    
+
 while Off():
     User_input = input("What would you like? (espresso/latte/cappuccino):")
+    while User_input == "report":
+        print(report())
+        User_input = input("What would you like? (espresso/latte/cappuccino):")
+
+    
     print(Coffee_Selection(User_input))
+
 
