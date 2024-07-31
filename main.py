@@ -24,36 +24,42 @@ MENU = {
     }
 }
 
+Water_Level = 500
+Milk_Level = 500
+Coffee_Level = 500
+
+
+Machine={
+    "water": Water_Level,
+    "milk": Milk_Level,
+    "coffee": Coffee_Level
+}
 
 def Coffee_Selection(Coffee):
-    Machine={
-    "water": 500,
-    "milk": 500,
-    "coffee": 500
-}
+    global Water_Level
+    global Milk_Level
+    global Coffee_Level
+
     if Coffee in MENU:
+        
         
         water_amount = MENU[Coffee]["ingredients"]["water"]
         milk_amount = MENU[Coffee]["ingredients"]["milk"]
         coffee_amount = MENU[Coffee]["ingredients"]["coffee"]
 
-        Water_Level = Machine.get("water")
-        Milk_Level = Machine.get("milk")
-        Coffee_Level = Machine.get("coffee")
-
         Water_Level-=water_amount
-        print(Water_Level)
-        milk_amount = Milk_Level-milk_amount
-        coffee_amount = Coffee_Level-coffee_amount
+        print(f"Water level: {Water_Level}")
+
 
         if Water_Level < 0 or Milk_Level < 0  or Coffee_Level < 0:
-            print("Sorry there is not enough water.") 
+            return "Sorry there is not enough water."
             
         
         return f"Your selection: {Coffee}"
     else:
         return "Unavailable"
     
+
 
 User_input = input("")
 
@@ -68,18 +74,16 @@ def report():
     if User_input == "report":
         return MENU.get("espresso")
 
-Machine={
-    "water": 500,
-    "milk": 500,
-    "coffee": 500
-}
-
 
 if __name__ == "__main__":
+  
+    Water_Level = Machine.get("water")
+    water_amount = MENU["latte"]["ingredients"]["water"]
+    print(water_amount)
    
     print("Cofee Machine")
-    print(Machine.get("water"))
-    print(MENU["latte"]["ingredients"]["water"])
+    # print(Machine.get("water"))
+
 
     while Off():
         User_input = input("What would you like? (espresso/latte/cappuccino):")
@@ -89,6 +93,9 @@ if __name__ == "__main__":
 
         
         print(Coffee_Selection(User_input))
-        print(Machine.get("water"))
+
+
+
+
 
 
