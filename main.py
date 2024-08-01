@@ -72,10 +72,10 @@ def Off():
     return True
 
 
-def report():
+def report(coffee):
     if User_input == "report":
-        return MENU.get("espresso")
-    
+        return MENU.get(coffee)
+
 def process_coins():
     quarter = 0.25
     dime = 0.10
@@ -83,21 +83,22 @@ def process_coins():
     pennie = 0.01
     coins = 0
 
-    User_input = input("Insert coins(quarter/dime/ nickle/pennie): ")
-    while User_input not in ["quarter","dime","nickle","pennie"]:
-        print("1st")
-        User_input = input("Insert coins(quarter/dime/ nickle/pennie): ")
+    insert = input("Insert coins(quarter/dime/ nickle/pennie): ")
+    coins+=quarter
+    while insert not in ["quarter","dime","nickle","pennie"]:
+        
+        insert = input("Insert coins(quarter/dime/ nickle/pennie): ")
         coins+=quarter
-        print(coins)
+        print(f"added: {coins}")
     
     cost_coffee = MENU["latte"]["cost"]
     print(cost_coffee)
     while cost_coffee > coins:
-        print("2nd")
         
-        User_input = input("Insert coins(quarter/dime/ nickle/pennie): ")
+        
+        insert = input("Insert coins(quarter/dime/ nickle/pennie): ")
         coins+=quarter
-        print(coins)
+        print(f"added: {coins}")
     return "added"
 
     
@@ -120,7 +121,8 @@ if __name__ == "__main__":
             User_input = input("What would you like? (espresso/latte/cappuccino):")
         Coffee_Selection(User_input)
         
-        process_coins()
+        print(process_coins())
+        print(report("latte"))
 
 
 
